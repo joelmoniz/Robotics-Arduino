@@ -27,7 +27,7 @@ void setup()
   right_pressed = loadImage("arrow_right_clicked2.png");
   right_pressed.resize(width/4, width/4);
 
-  //myPort = new Serial(this, Serial.list()[0], 9600);
+  myPort = new Serial(this, Serial.list()[0], 9600);
 }
 
 void draw()
@@ -38,7 +38,7 @@ void draw()
     image(down, width/2, height-height/4);
     image(right, width-width/4, height/2);
     image(left, width/4, height/2);
-   // myPort.write('s');  //Stop
+    myPort.write('s');  //Stop
   }
   else
   {
@@ -47,29 +47,31 @@ void draw()
       image(down, width/2, height-height/4);
       image(right, width-width/4, height/2);
       image(left, width/4, height/2);
-     // myPort.write('f');  //Forward
+      myPort.write('f');  //Forward
     }
     else   if (dist(mouseX, mouseY, width/2, height-height/4)<width/8) {
       image(up, width/2, height/4);
       image(down_pressed, width/2, height-height/4);
       image(right, width-width/4, height/2);
       image(left, width/4, height/2);
-    //  myPort.write('b');  //Backward
+      myPort.write('b');  //Backward
     }
     else   if (dist(mouseX, mouseY, width-width/4, height/2)<width/8) {
       image(up, width/2, height/4);
       image(down, width/2, height-height/4);
       image(right_pressed, width-width/4, height/2);
       image(left, width/4, height/2);
-     // myPort.write('r');  //Right
+      myPort.write('r');  //Right
     }
     else   if (dist(mouseX, mouseY, width/4, height/2)<width/8) {
       image(up, width/2, height/4);
       image(down, width/2, height-height/4);
       image(right, width-width/4, height/2);
       image(left_pressed, width/4, height/2);
-   //  myPort.write('l');  //Left
+      myPort.write('l');  //Left
     }
+    else
+      myPort.write('s');  //Stop
   }
 }
 void mousePressed()
